@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             BackgroundColor="LightGrey">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="25"
+            HorizontalOptions="FillAndExpand">
+
+            <Label
+                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App UI" 
+                TextColor="#333333"
+            />
+            <Label
+                Text="Bluetooth Device Connector"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                Margin="0,0,0,20"
+                TextColor="#333333" />
+
+            <Button x:Name="bluetoothButton" 
+                      Text="Scan for Devices" 
+                      Clicked="OnBluetoothButtonClicked"
+                      BackgroundColor="#4CAF50"
+                      TextColor="White"
+                      CornerRadius="5"/>
+            <Label x:Name="connectionStatusLabel"
+                  Text="Not connected to any device"
+                  HorizontalOptions="Center"
+                  Margin="10"
+                  TextColor="DarkGreen"
+                />
+            <CollectionView x:Name="devicesList"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding Devices}"
+                            SelectionChanged="OnDeviceSelected"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="5" CornerRadius="5" BorderColor="#D3E3F2" BackgroundColor="Azure">
+                            <StackLayout>
+                                <Label Text="{Binding Name}" 
+                                       FontAttributes="Bold"
+                                       TextColor="#1A5276" />
+                                <Label Text="{Binding Id}" 
+                                       FontSize="Small" 
+                                       TextColor="#717D7E" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
